@@ -4,19 +4,15 @@
 # documentation.
 # This workflow will build a package using Gradle and then publish it to GitHub packages when a release is created
 # For more information see: https://github.com/actions/setup-java/blob/main/docs/advanced-usage.md#Publishing-using-gradle
-
 name: Android CI/CD
-
 on:
   push:
     branches:
 - main # Change this to your main branch name
-
 jobs:
   build:
     name: Build and Test
     runs-on: ubuntu-latest
-
 steps:
 - name: Checkout code
   uses: actions/checkout@v2
@@ -26,13 +22,11 @@ steps:
   with:
     distribution: 'adopt'
     java-version: '11'
-
 - name: Build and test
   run: |
     chmod +x gradlew
     ./gradlew assembleRelease
     ./gradlew test
-
 - name: Upload APK
   uses: actions/upload-artifact@v2
   with:
